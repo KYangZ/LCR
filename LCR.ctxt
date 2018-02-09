@@ -1,6 +1,11 @@
 #BlueJ class context
 comment0.target=LCR
-comment0.text=\n\ Write\ a\ description\ of\ class\ LCR\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=playerCount\ playerChips
-comment1.target=LCR(int,\ int)
-numComments=2
+comment0.text=\n\ \n\ Write\ a\ description\ of\ class\ LCR\ here.\n\n\ @author\ Kory\ Yang,\ Kristy\ Lee\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=LCR()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ LCR\n
+comment2.params=player_count\ chips_per_player
+comment2.target=LCR(int,\ int)
+comment3.params=
+comment3.target=void\ run()
+numComments=4

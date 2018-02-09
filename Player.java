@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class Player here.
  *
@@ -7,27 +7,33 @@
  */
 public class Player
 {
-    public String name;
-    public int chips;
-    public int ID;
-    public boolean win;
     
-    public Player(String name, int chips){
+    private ArrayList<Dice> dice = new ArrayList<Dice>();
+    private String name;
+    private int chips;
+    private int ID;
+    private boolean win = false;
+    private int wins;
+    private int losses;
+    
+    public Player(String name, int chips, int ID, int wins, int losses){
         this.name = name;
         this.chips = chips;
-        this.win = false;
+        this.ID = ID;
+        this.wins = wins;
+        this.losses = losses;
     }
     
-    public void setName(String name){
-        this.name = name;
+    public void addChips(){
+        this.chips++;
     }
     
-    public void setChips(int n){
-        this.chips = n;
+    public void removeChips(){
+        this.chips--;
     }
     
-    public void setID(int i){
-        this.ID = i;
+    public void playerTurn(){
+        
     }
     
     public String getName(){
@@ -41,4 +47,5 @@ public class Player
     public int getID(){
         return this.ID;
     }
+   
 }
