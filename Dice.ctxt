@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Dice
+comment1.params=p
+comment1.target=Dice(Player)
+comment2.params=
+comment2.target=void\ roll()
+numComments=3
