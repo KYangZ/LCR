@@ -36,8 +36,12 @@ public class Player
         this.chips = n;
     }
     
-    public void playerTurn(){
-        
+    public void addWin(){
+        wins++;
+    }
+    
+    public void addLoss(){
+        losses++;
     }
     
     public String getName(){
@@ -52,6 +56,13 @@ public class Player
         return this.ID;
     }
     
+    public int getWins(){
+        return this.wins;
+    }
+    
+    public int getLosses(){
+        return this.losses;
+    }
     
    
 }

@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 /**
  * Write a description of class LCR here.
  *
@@ -37,7 +31,6 @@ public class LCR {
     
     public void run(){
         while (isRunning) {
-
             GameRecord gameRecord = new GameRecord("LCRPlayers.txt");
             //ArrayList players (collection of Player objects) retrieved from gameRecord 
             //and uploaded onto LCR game program
@@ -81,6 +74,7 @@ public class LCR {
                     for(Player p : players){
                         if(checkWin(p)){
                             onePlayerRemaining = true;
+                            gameRecord.updateRecord();
                             break;
                         }
                     }
@@ -161,6 +155,16 @@ public class LCR {
         
         if(win){
             System.out.println(p.getName() + " won after " + turns + " turns.");
+            p.addWin();
+            System.out.println(p.getName() + " now has " + p.getWins() + " wins and " + p.getLosses() + " losses.");
+            
+            for(Player L : players){
+                if(L.getID() == p.getID()){
+                    //do nothing
+                } else {
+                    L.addLoss();
+                }
+            }
         }
         
         return win;

@@ -1,5 +1,5 @@
-Donald,0,0
-Barry,0,0
-W,0,0
-Bill,0,0
-GeorgeHW,0,0
+Donald,0,10
+Barry,4,6
+W,1,9
+Bill,3,7
+GeorgeHW,2,8

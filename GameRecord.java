@@ -42,8 +42,27 @@ public class GameRecord {
         
     }
     
-    public void updateRecord(/*pass parameters here */){
-        
+    public void updateRecord(){
+        try { 
+            
+            FileWriter write = new FileWriter(this.file,false);
+            
+            for(Player p : players){
+                String str = "";
+                str += p.getName();
+                str += ",";
+                str += Integer.toString(p.getWins());
+                str += ",";
+                str += Integer.toString(p.getLosses());
+                write.write(str);
+                write.write(System.getProperty("line.separator"));
+            }
+
+            write.close(); 
+
+        } catch (IOException io) {
+            System.out.println(io.getMessage());
+        }
         
     }
     
