@@ -22,7 +22,7 @@ public class GameRecord {
             Scanner sc = new Scanner(new File(this.file));
             String str = "";
             String[] data;
-            int ID = 1;
+            int ID = 0;
             
             while(sc.hasNextLine()){
                 str = sc.nextLine();
@@ -30,7 +30,6 @@ public class GameRecord {
                 Player name = new Player(data[0], 5, ID, Integer.parseInt(data[1]), Integer.parseInt(data[2]));
                 players.add(name);
                 ID++;
-               
             }
             sc.close();  //close the scanner
 

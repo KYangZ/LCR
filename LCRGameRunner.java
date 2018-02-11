@@ -7,7 +7,7 @@
  */
 
 public class LCRGameRunner{
-	public static void main(String[ ]  args){
+	public static void main(){
 		int player_count = 5;
 		int chips_per_player = 5;
 		LCR game = new LCR(player_count, chips_per_player);

@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Dice
-comment1.params=
-comment1.target=Dice()
-comment2.params=
-comment2.target=int\ roll()
+comment1.params=p
+comment1.target=Dice(Player)
+comment2.params=p
+comment2.target=java.util.ArrayList\ roll(Player)
 numComments=3

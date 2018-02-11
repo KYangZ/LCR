@@ -1,17 +1,27 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.*;
+
+
+
+
+
+
+
 /**
  * Write a description of class LCR here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.*;
+
 public class LCR {
     private int player_count;
     private int chips_per_player;
     private ArrayList <Player> players = new ArrayList<Player>();
     private boolean isRunning = true;
+    private int turns = 1;
 
     public LCR(){
     
@@ -26,148 +36,140 @@ public class LCR {
 
     
     public void run(){
-        do{
-            Scanner in = new Scanner(System.in);
+        while (isRunning) {
+
             GameRecord gameRecord = new GameRecord("LCRPlayers.txt");
             //ArrayList players (collection of Player objects) retrieved from gameRecord 
             //and uploaded onto LCR game program
             this.players = gameRecord.retrieveData(); 
-            boolean onePlayerRemaining = true; //if true, then the rolling will stop, and record winner
-            String[] temp; 
-            String str = ""; //temporarily store dice roll results
+            boolean onePlayerRemaining = false; //if true, then the rolling will stop, and record winner
             ArrayList<Integer> rollResults = new ArrayList<Integer>();
             
-          // gameLoops: 
+            turns = 1;
+            
+            // gameLoops: 
             do{
-                
                 //player 1-5 seated from left to right, player 1 is on player 5's right
                 for (Player player : players){ //for each player 
+                    Dice die = new Dice(player);
+
+                    rollResults = die.roll(player);
                     
-                    int playerID = player.getID();
-                    if (player.getDiceSize() == 0){ //fail fast
-                        //do nothing; pass
-                    }
-                    
-                    else{
-                    
-                        for (int i = 0; i < player.getDiceSize(); i++){ //roll dice
-                            
-                            str = player.roll();  
-                            
-                            //fail fast
-                            if (str.isEmpty()){
-                              break; //move onto next player
-                            }
-                            
-                            temp = str.split(",");
-                            for(int j = 0; i < temp.length; i++){
-                                rollResults.add(Integer.parseInt(temp[j])); //stores results of roll in ArrayList
-                            }
-                            
-                            
-                            for (int k = 0; k < rollResults.size(); k++){
-                                
-                                
-                                switch (rollResults.get(k)){
-                                    case 1: //"L"
-                                        l(playerID);
-                                    
-                                    case 2: //"C"
-    
-                                        c(playerID);
-                                    
-                                    case 3: //"R"
-                                        
-                                        r(playerID);
-                                    
-                                
-                                }
-                                
-                                
-                                
-                            }
-                            
-                            
-                            
-                            for (int m = 0; m < rollResults.size(); m++){ //remove elements of the array list, leave array empty for next dice roll
-                                rollResults.remove(rollResults.size() - 1);
-                            }
-                            
-                            
-                            
+                    System.out.println("Turn " + turns);
+
+                    for(Integer result : rollResults){
+                        switch(result){
+                            case 1:
+                                l(player.getID());
+                                break;
+                            case 2:
+                                c(player.getID());
+                                break;
+                            case 3:
+                                r(player.getID());
+                                break;
+                            case 4:
+                                break;
+                            default:
+                                System.out.println("Error");
+                                break;
                         }
-                        
-                        
                     }
                     
+                    printPlayerStates();
+                    
+                    for(Player p : players){
+                        if(checkWin(p)){
+                            onePlayerRemaining = true;
+                            break;
+                        }
+                    }
+                    
+                    if(onePlayerRemaining){
+                        break;
+                    } else {
+                        turns++;
+                    }
                 }
-                
-                
-                
-                
             } while(!onePlayerRemaining);
-            
-            
-            
-            
-            do{
+
+            while (isRunning) {
                 System.out.println("Play again? Type 'y' to play again or 'n' to stop playing the game");
-                if (in.next() == "y"){
+                Scanner in = new Scanner(System.in);
+                if (in.nextLine().equals("y")){
                     isRunning = true;
-                }
-                else if (in.next() == "n"){
+                    for(Player p : players) {
+                        p.setChips(5);
+                    }
+                    run();
+                    onePlayerRemaining = false;
+                } else if (in.nextLine().equals("n")){
                     isRunning = false;
+                    System.out.println("Goodbye!");
+                    in.close();
+                } else {
+                    System.out.println("Invalid input. Try again.");
                 }
-            }while (in.next() != "y" && in.next() != "n");
-             
-          
-        } while (isRunning);
+            } 
+        } 
         
     }
     
     public void l(int playerID){
-        
-        int indexPlayerID = playerID - 1; //the position of the player in the ArrayList is the difference playerID (his actual ID) - 1 
-        
-        players.get(indexPlayerID).removeChips();
-        
-        if (playerID == 1){
-            players.get(4).addChips(); //give chip to player 5, who is seated on player 1's left
-            
+        players.get(playerID).removeChips();
+        if (playerID == 0){
+            players.get(4).addChips(); //give chip to player 5, who is seated on player 1's left            
+        } else{   
+            players.get(playerID - 1).addChips(); //give chip to player on left    
         }
-        
-        
-        else{   
-            players.get(indexPlayerID - 1).addChips(); //give chip to player on left
-    
-        }
-        
-        
     }
     
     public void c(int playerID){
-        
+        players.get(playerID).removeChips();
+        //chips go in the center, to no one
     }
     
     public void r(int playerID){
-        
-        
-        int indexPlayerID = playerID - 1; //the position of the player in the ArrayList is the difference playerID (his actual ID) - 1 
-        
-        players.get(indexPlayerID).removeChips();
-        
-        if (playerID == 5){
-            players.get(0).addChips(); //give chip to player 1, who is seated on player 5's right
-            
-        }
-        
-        
-        else{   
-            players.get(indexPlayerID + 1).addChips(); //give chip to player on right
-            
-        }
-        
+        players.get(playerID).removeChips();
+        if (playerID == 4){
+            players.get(0).addChips(); //give chip to player 1, who is seated on player 5's right          
+        } else{   
+            players.get(playerID + 1).addChips(); //give chip to player on right          
+        }        
     }
     
+    public boolean checkWin(Player p){
+        boolean win = false;
+        int chipSum = 0;
+        
+        if(p.getChips() <= 0){
+            win = false;
+        } else {
+            for(Player a : players){
+                if(a.getID() == p.getID()){
+                    //do nothing
+                } else {
+                    chipSum += a.getChips();
+                }
+            }
+            
+            if(chipSum <= 0 && p.getChips() > 0){
+                win = true;
+            }
+            
+        }
+        
+        if(win){
+            System.out.println(p.getName() + " won after " + turns + " turns.");
+        }
+        
+        return win;
+    }
     
+    private void printPlayerStates(){
+        for(Player p : players){
+            System.out.println(p.getName() + ": " + p.getChips() + " chips");
+        }
+        System.out.println();
+    }
 }
