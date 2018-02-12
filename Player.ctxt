@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Player
-comment0.text=\n\ Write\ a\ description\ of\ class\ Player\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Player\ object\ with\ the\ following\ attributes\:\ name,\ chips,\ ID,\ wins,\ losses\n\ Also\ keeps\ track\ of\ winner\ status\ in\ a\ game\n\n\ @author\ Kristy\ Lee,\ Kory\ Yang\n\ @version\ 20180211\n
 comment1.params=name\ chips\ ID\ wins\ losses
 comment1.target=Player(java.lang.String,\ int,\ int,\ int,\ int)
 comment10.params=

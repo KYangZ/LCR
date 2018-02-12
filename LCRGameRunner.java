@@ -1,13 +1,13 @@
 
 /**
- * Write a description of class GameRunner here.
+ * Runs LCR game
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Kory Yang, Kristy Lee
+ * @version 20180211
  */
 
 public class LCRGameRunner{
-	public static void main(){
+	public static void main(String[] args){
 		int player_count = 5;
 		int chips_per_player = 5;
 		LCR game = new LCR(player_count, chips_per_player);
