@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=GameRecord
-comment0.text=\n\ Write\ a\ description\ of\ class\ GameRecord\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Imports\ game\ record\ which\ contains\ player\ data\:\ name\ of\ player,\ wins,\ losses\n\ Updates\ game\ record\ with\ new\ wins\ and\ losses\n\n\ @author\ Kory\ Yang,\ Kristy\ Lee\n\ @version\ 20180211\n
 comment1.params=file
 comment1.target=GameRecord(java.lang.String)
 comment2.params=

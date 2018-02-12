@@ -1,8 +1,8 @@
 /**
- * Write a description of class Dice here.
+ * Dice object that includes dice rolling
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Kory Yang, Kristy Lee
+ * @version 20180211
  */
 
 import java.util.Random;
@@ -22,12 +22,12 @@ public class Dice
     public ArrayList<Integer> roll(Player p){
         rollResults.clear();
         
-        if (p.getChips() <= 0){
-            dieNum = 0;
+        if (p.getChips() <= 0){ 
+            dieNum = 0; //with 0 chips, player has 0 dice
         } else if (p.getChips() >= 4){
-            dieNum = 3;
+            dieNum = 3; //players can only roll 3 dice max
         } else {
-            dieNum = p.getChips();
+            dieNum = p.getChips(); //players roll # of dice that is equal to his/her # of chips
         }
         
         for(int i = 0; i < dieNum; i++){

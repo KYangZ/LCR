@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class LCR here.
+ * LCR game
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Kristy Lee, Kory Yang
+ * @version 20180211
  */
 
 import java.util.ArrayList;
@@ -90,17 +90,19 @@ public class LCR {
             while (isRunning) {
                 System.out.println("Play again? Type 'y' to play again or 'n' to stop playing the game");
                 Scanner in = new Scanner(System.in);
-                if (in.nextLine().equals("y")){
+                String response = in.next();
+                if (response.equals("y")){
                     isRunning = true;
                     for(Player p : players) {
                         p.setChips(5);
                     }
                     run();
                     onePlayerRemaining = false;
-                } else if (in.nextLine().equals("n")){
+                } else if (response.equals("n")){
                     isRunning = false;
                     System.out.println("Goodbye!");
-                    in.close();
+                    break;
+                    //in.close();
                 } else {
                     System.out.println("Invalid input. Try again.");
                 }
@@ -148,7 +150,7 @@ public class LCR {
             }
             
             if(chipSum <= 0 && p.getChips() > 0){
-                win = true;
+                win = true;//one player has won
             }
             
         }
@@ -162,7 +164,7 @@ public class LCR {
                 if(L.getID() == p.getID()){
                     //do nothing
                 } else {
-                    L.addLoss();
+                    L.addLoss(); //all other players have a loss
                 }
             }
         }

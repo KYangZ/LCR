@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 /**
- * Write a description of class Player here.
+ * Player object with the following attributes: name, chips, ID, wins, losses
+ * Also keeps track of winner status in a game
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Kristy Lee, Kory Yang
+ * @version 20180211
  */
 public class Player
 {

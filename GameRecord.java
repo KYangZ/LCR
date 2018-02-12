@@ -4,10 +4,11 @@ import java.io.FileWriter;
 import java.util.ArrayList;
     
 /**
- * Write a description of class GameRecord here.
+ * Imports game record which contains player data: name of player, wins, losses
+ * Updates game record with new wins and losses
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Kory Yang, Kristy Lee
+ * @version 20180211
  */
 public class GameRecord {
     private ArrayList <Player> players = new ArrayList<Player>(); 
@@ -47,7 +48,7 @@ public class GameRecord {
             
             FileWriter write = new FileWriter(this.file,false);
             
-            for(Player p : players){
+            for(Player p : players){ //writing file for each player
                 String str = "";
                 str += p.getName();
                 str += ",";

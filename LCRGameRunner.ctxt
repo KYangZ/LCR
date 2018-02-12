@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=LCRGameRunner
-comment0.text=\n\ Write\ a\ description\ of\ class\ GameRunner\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=
-comment1.target=void\ main()
+comment0.text=\n\ Runs\ LCR\ game\n\n\ @author\ Kory\ Yang,\ Kristy\ Lee\n\ @version\ 20180211\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
 numComments=2
